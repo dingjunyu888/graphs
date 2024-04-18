@@ -63,6 +63,21 @@ public class Graph {
        // FILL IN CODE
     }
 
+    public void runDFSFromVertex(int vertexId, boolean[] visited) {
+
+        // FILL IN CODE
+
+    }
+
+    /** Repeatedly runs dfs starting from each vertex that has not been visited
+     */
+    public void dfsMain() {
+        boolean[] visited = new boolean[graph.length];
+        // FILL IN CODE: run dfs from every vertex
+        // Should call runDFSFromVertex for each vertex
+
+    }
+
 
     public static void main(String[] args) {
         Graph g = new Graph(8);
@@ -102,6 +117,7 @@ public class Graph {
         System.out.println(g.getNumberOfOutgoingEdges(0));
         // g.printNeighborsFromVertex(5);
         // g.printIncomingEdges(6);
+        g.dfsMain();
     }
 }
 
