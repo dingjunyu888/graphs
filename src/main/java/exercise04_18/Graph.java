@@ -52,15 +52,30 @@ public class Graph {
     }
 
     public void printNeighbors(int vertexId) {
-        Edge head = graph[vertexId]; //adjacency list for this vertex
+        Edge curr = graph[vertexId]; //adjacency list for this vertex
         // FILL IN CODE: print all the vertices we can directly reach for a given vertex
         // by following outgoing edges
-
+        while(curr != null){
+            System.out.println(curr.neighbor);
+            curr = curr.next;
+        }
 
     }
 
     public void printIncomingEdges(int vertexId) {
        // FILL IN CODE
+        for(int i = 0; i< graph.length; i++){
+            if (i == vertexId){
+                continue;
+            }
+            Edge curr = graph[i];
+            while(curr != null){
+                if(curr.neighbor == vertexId){
+                    System.out.println(graph[i]);
+                }
+                curr = curr.next;
+            }
+        }
     }
 
     public void runDFSFromVertex(int vertexId, boolean[] visited) {
