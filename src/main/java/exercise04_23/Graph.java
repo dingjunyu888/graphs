@@ -52,7 +52,13 @@ public class Graph {
         visited[vertex] = true;
         System.out.println(vertex);
         // iterate over edges of vertex
-
+        Edge curr = graph[vertex];
+        while(curr != null){
+            if(!visited[curr.neighbor]){
+                dfs(curr.neighbor, visited);
+            }
+            curr = curr.next;
+        }
 
         // FILL IN CODE:
         // Iterate over outgoing edges of this vertex
@@ -72,6 +78,15 @@ public class Graph {
         while (!stack.isEmpty()) {
             // pop the vertex nextV from the stack
             int nextV = stack.pop();
+            System.out.println(nextV);
+            visited[nextV] = true;
+            Edge curr = graph[nextV];
+            while(curr != null){
+                if(!visited[curr.neighbor]){
+                    stack.push(curr.neighbor);
+                }
+                curr = curr.next;
+            }
             // mark it as visited and print it
             // iterate over the neighbors of nextV
             // if the neighbor has not been visited, push it onto the stack
@@ -102,7 +117,15 @@ public class Graph {
         System.out.println(vertex);
         while (!queue.empty()) {
             int nextV = (int)queue.dequeue();
-
+            Edge curr = graph[nextV];
+            while(curr != null){
+                if(!visited[curr.neighbor]){
+                    visited[curr.neighbor] = true;
+                    System.out.println(curr.neighbor);
+                    queue.enqueue(curr.neighbor);
+                }
+                curr = curr.next;
+            }
             // Iterate over outgoing edges; add every non-visited neighbor to the queue
             // and mark as visited
 
